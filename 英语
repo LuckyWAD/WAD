@@ -1,0 +1,122 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<time.h>
+int main()
+{
+    srand((unsigned)time(NULL)); //使循环数是按时间的先后排列的，大概为正向分布，防止出现循环数相似的情况
+    int b,c;
+    char e;
+    int n[18];
+    int p[18];//只要将数组括号里的数进行更改，就可以进行多次循环
+    for(int i=0;i<18;i++)
+    {
+        n[i] =rand()%58;
+    }
+    for (int i = 0; i <18 ; i++)
+    {
+        b=n[i];
+        printf("第%d个抽取的初始结果是 %d\n",i+1,b);
+        if((b%2)==0)    //如果b除以2出现余数，也就说明是偶数，为真
+        {
+            b=n[i];
+            c=b;
+        }
+        else
+        {
+            b=n[i];
+            c=b+1;
+        }
+        printf("第%d个抽取的最终结果是 %d\n",i+1,c);
+        p[i]=c;
+    }
+    for (int i = 0; i <18; i++)
+    {
+        printf("%d ", p[i]);//该段循环对应的是数组p的数字
+    }
+    printf("\n");
+    char *p1[1200]={
+            "instrumental","起作用的","emerge","出现；兴起","collaborate","v词合作","hence","因此",
+            "tender","嫩的","classification","分类","feasible","分类","resignation","辞职","textile","织物","triangular","三角形的","rarely",
+            "不常","historical","历史的","presence","出席","expansion","扩大","respect","尊敬","shallow","浅的","spark","火花","flee",
+            "逃掉","denial","否认","hardware","硬设备，硬件","width","宽度","basically","从根本上说","adjust","调整","currency","货币","cheat",
+            "作弊","retirement","退休","declaration","公告","increasingly","日益，越来越多的","coordinate","配合","infant","婴儿","exclamation",
+            "呼喊","raw","未加工的，自然状态的","discourage","使灰心","bacteria","细菌","mineral","无机物","confine","限制","conceal","隐瞒，隐藏",
+            "imitation","模仿，效仿；赝品","religious","宗教的","ethnic","种族的","doubtful","拿不准的","miracle","奇迹，惊人事件","crash","猛撞",
+            "phase","阶段","combine","结合","leisure","闲暇","urgent","紧迫的","component","部件，零件","silicon","硅","ashore","在岸上","devil","魔鬼",
+            "illegal","非法的","cosmic","宇宙的","gracious","慈祥的","index","索引","riot","暴乱","pressure","压力","lens","镜片","leading","指导的",
+            "reform","改革","prevention","阻止；妨碍","initiate","开始","rack","挂架","finding","发现","confess","勉强承认；忏悔","drain","耗尽",
+            "immense","巨大的","fertile","肥沃的","defect","缺点","deficiency","缺乏，不足","origin","来源","blade","刀刃，刀片","technician",
+            "技术员","readily","乐意地","comparable","可比作----的；相似的","undertaking","任务","kneel","跪","abstract","抽象的","torture",
+            "酷刑","prospective","预期的","formulate","制订；规划","participate","参加","keen","热衷的，热情的","liberate","解放","bankrupt",
+            "破产的","ally","结盟","transmit","传送，输送","accumulate","积聚","primitive","原始的","enlighten","教育","undoubtedly","毋庸置疑地，肯定的",
+            "insist","坚持","dove","鸽子,温和派政客","excessive","过多的","harsh","残酷的，严厉的","confidence","信任","waterproof","不透水的，防水的",
+            "altitude","高度，海拔","sunrise","日出","rhythm","韵律，节奏","loan","借出","drastic","激烈的","narration","叙述","character","人物，角色",
+            "scheme","计划","modest","谦虚的","hollow","孔，洞","compromise","折中状态；妥协","lest","唯恐，以免","sheer","纯粹的","ideal","理想的","inspector",
+            "检查员","perfection","尽善尽美","jealousy","妒忌","sponsor","赞助者，赞助商","critical","关键的；决定性的","recession","经济衰退期","pursue",
+            "（长期）追求，寻求","bearing","影响","identify","把....认同于","crew","全体船员","attribute","把...归因于","pirate","海盗，盗版者",
+            "watertight","防水的","item","物品；项目；条款","warfare","作战","ribbon","缎带，丝带","faculty","能力","glue","胶","crime","罪","spur",
+            "刺激物","exception","例外","shady","阴凉的","milky","含奶的","provoke","激怒","gardener","园丁","foundation","基础原理","equality",
+            "相同；平等","scarcity","缺乏","beloved","钟爱的","property","房地产","amongst","在...之中","imaginative","爱想象的","overhear","偶然听到",
+            "influential","有权势的","complexity","复杂","conference","正式会议","greenhouse","温室","plunge","一头进入","correspondent","通讯记者",
+            "center","最重要的地方，中心","tolerance","忍受","noticeable","显而易见的，明显的","integrate","结合","inhabitant","居民，住户","repeatedly",
+    };
+    int q = 0;
+    char str1[5000];
+    char str2[5000];
+    char s[5000]; // 如果不初始化s[]，系统会自动赋值
+    for (int i = 0; i <18 ; i++)
+    {
+        e = p[i];
+        void print_star();
+        print_star();
+        printf("抽取到的单词意思是  %s\n", p1[e - 1]);
+        gets(str1);
+        strcpy(str2,p1[e-2]);
+        if (strcmp(str1,str2)==0)
+            printf("输入的单词正确\n");
+        else
+        {
+            printf("输入的单词错误\n");
+            printf("应该打出的单词为 %s\n",p1[e-2]);
+        }
+    }
+    return 0;
+}
+void print_star()
+{
+    printf("————————***********————————\n");
+}
+//由于设置的原因，e-1的的数为我们所求，所以我们需要打出的单词为p1[e-2]
+/*char (*q)[50]=&s;//此处是把数组当作一个整体，然后将地址给前面的，前面（*q）[50]为数组指针想要的内容
+for (int i = 0; i <2 ; i++) {
+    printf("%s\n",*(q+1));
+}
+for (int i = 0; i <2 ; i++)
+{
+    if(stricmp(p1[e-2],*(q+1)+i)==0)
+    {
+        printf("输入的单词正确。\n");
+    }
+    else
+    {
+        printf("输入的单词错误。\n");
+    }
+}
+/*char *q=p1[e-2];
+for (int i = 0; i <2 ; i++)
+{
+    if(stricmp(q,s)==0)
+    {
+        printf("输入的单词正确。\n");
+    }
+    else
+    {
+        printf("输入的单词错误。\n");
+    }
+}*/
+
+
+//该代码已成功，但不足的条件在于如何化简方法进行，如何使得在复制时输入，而不是每次需要改动代码进行
+//该代码的用法在于定义一个特殊动态空间存放p1数组char *p1=(char*)malloc(sizeof(char)* 100);scanf("%s",p1);
+//该段代码已经成功，但修改意见为：如何使得该代码能得到精简。
